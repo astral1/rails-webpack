@@ -1,0 +1,26 @@
+{
+    "name": "<%= Rails.application.class.parent.name.underscore.gsub('/', '-') %>",
+    "version": "<%= Rails.configuration.webpack.version %>",
+    "authors": [
+        <%- Rails.configuration.webpack.authors.each do |author| -%>
+        "<%= author['name'] %> <<%= author['email'] %>>"<%= ',' unless author == Rails.configuration.webpack.authors.last %>
+        <%- end -%>
+    ],
+    "description": "<%= Rails.configuration.webpack.description %>",
+    "main": "<%= Rails.configuration.webpack.main %>",
+    <%- if Rails.configuration.webpack.bower_configured?(:dependencies) -%>
+    "dependencies": {
+    <%- Rails.configuration.webpack.bower.dependencies.each do |dep| -%>
+        <%= "\"#{dep['name']}\": \"#{dep['version']}\"#{"," unless dep == Rails.configuration.webpack.bower.dependencies.last}" %>
+    <%- end -%>
+    },
+    <%- end -%>
+    "license": "<%= Rails.configuration.webpack.license %>",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "app/assets/webpack/test",
+        "app/assets/webpack/tests"
+    ]
+}

@@ -1,0 +1,40 @@
+{
+    "name": "<%= Rails.application.class.parent.name.underscore.gsub('/', '-') %>",
+    "version": "<%= Rails.application.config.webpack.version %>",
+    "description": "<%= Rails.application.config.webpack.description %>",
+    "main": "<%= Rails.application.config.webpack.main %>",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    <%- if Rails.configuration.webpack.npm_configured?('repository') -%>
+    "repository": {
+        "type": "<%= Rails.configuration.webpack.npm.repository.type %>",
+        "url": "<%= Rails.configuration.webpack.npm.repository.url %>"
+    },
+    <%- end -%>
+    <%- if Rails.configuration.webpack.npm_configured?('keywords') -%>
+    "keywords": [
+    <%- Rails.configuration.webpack.npm.keywords.each do |keyword| -%>
+        "<%= keyword %>"<%= ',' unless keyword == Rails.configuration.webpack.npm.keywords.last %>
+    <%- end -%>
+    ],
+    <%- end -%>
+    <%- if Rails.configuration.webpack.npm_configured?('dependencies') -%>
+    "dependencies": {
+    <%- Rails.configuration.webpack.npm.dependencies.each do |dep| -%>
+        "<%= dep['name']%>": "<%= dep['version'] %>"<%= ',' unless dep == Rails.configuration.webpack.npm.dependencies.last %>
+    <%- end -%>
+    },
+    <%- end -%>
+    <%- if Rails.configuration.webpack.npm_configured?('develop_dependencies') -%>
+    "devDependencies": {
+    <%- Rails.configuration.webpack.npm.develop_dependencies.each do |dep| -%>
+        "<%= dep['name']%>": "<%= dep['version'] %>"<%= ',' unless dep == Rails.configuration.webpack.npm.develop_dependencies.last %>
+    <%- end -%>
+    },
+    <%- end -%>
+    "author": "<%= Rails.configuration.webpack.authors.first['name'] %> <<%= Rails.configuration.webpack.authors.first['email'] %>>",
+    "license": "<%= Rails.application.config.webpack.license %>"<%- if Rails.application.config.webpack.keys.include?('homepage') -%>,
+    "homepage": "<%= Rails.application.config.webpack.homepage %>"
+    <%- end -%>
+}
