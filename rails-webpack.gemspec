@@ -1,3 +1,4 @@
+$:.unshift File.expand_path('lib', __dir__)
 # Maintain your gem's version:
 require 'rails/webpack/version'
 
@@ -7,9 +8,9 @@ Gem::Specification.new do |s|
   s.version     = Rails::Webpack::VERSION
   s.authors     = ['Jeong, Jiung']
   s.email       = ['ethernuiel@sanultari.com']
-  s.homepage    = 'TODO'
-  s.summary     = 'TODO: Summary of RailsWebpackSupport.'
-  s.description = 'TODO: Description of RailsWebpackSupport.'
+  s.homepage    = 'https://bitbucket.org:amamcloud/rails-webpack'
+  s.summary     = 'Rails Plugin fro webpack support'
+  s.description = 'Rails Plugin fro webpack support'
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
