@@ -1,4 +1,1 @@
-module Rails
-  module Webpack
-  end
-end
+require 'rails/webpack'
