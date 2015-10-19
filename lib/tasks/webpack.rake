@@ -12,7 +12,8 @@ namespace :webpack do
 
   desc 'Initialize Webpack environments'
   task :init do
-    thor :empty_directory, 'app/webpack'
+    thor :empty_directory, 'app/webpack/src/pages'
+    thor :copy_file, 'files/src/page.common.coffee', 'app/webpack/src/pages/common.coffee'
 
     thor :gsub_file, 'config/initializers/assets.rb', /(version\s=\s)["'][0-9]+(\.[0-9]+)*["']$/, "\\1'#{Rails.application.config.webpack.version}'"
     thor :copy_file, 'files/tasks.coffee', 'app/webpack/tasks.coffee'
