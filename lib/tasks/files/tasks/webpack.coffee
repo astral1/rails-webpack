@@ -3,7 +3,7 @@ webpack = (gulp, plugins, root) ->
   webpack = require 'webpack'
   stream = require 'webpack-stream'
   named = require 'vinyl-named'
-  (callback) ->
+  () ->
     gulp.src('src/pages/**.coffee')
       .pipe(named())
       .pipe(stream(
