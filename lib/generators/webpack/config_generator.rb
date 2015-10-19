@@ -3,7 +3,7 @@ module Webpack
     source_root File.expand_path(__dir__)
 
     def change_rails_context
-      gsub_file 'Rakefile', 'require File.expand_path(\'../config/application\', __FILE__)', 'require_realtive \'config/environment\''
+      gsub_file 'Rakefile', 'require File.expand_path(\'../config/application\', __FILE__)', 'require_relative \'config/environment\''
     end
 
     def init_config

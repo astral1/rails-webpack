@@ -22,12 +22,8 @@ webpack = (gulp, plugins, root) ->
           new webpack.ResolverPlugin(
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('bower.json', ['main'])
           )
-        ],
-        (err, stats) ->
-          throw new gutil.PluginError('webpack', err) if(err)
-          plugins.util.log('[webpack]', stats.toString())
-        callback())
-      )
+        ]
+      ))
       .pipe(gulp.dest(path.join root, '../assets/compiled/'))
     return null
 
