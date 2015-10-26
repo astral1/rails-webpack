@@ -148,3 +148,8 @@ rake webpack:sync
 `rake npm:install:clean` - 기존 의존성을 모두 삭제한 후 재설치
 `rake prepare:webpack` - Webpack 작업 실행. `assets:precompile`이 실행될 때 함께 실행된다.
 `rake webpack:init` - 기본 레이아웃 작성. intializer, default script, page script등
+
+License
+-------
+
+MIT 라이센스를 따르며, 상세한 사항은 LICENSE 파일 참조
