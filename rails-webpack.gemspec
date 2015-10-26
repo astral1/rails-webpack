@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ['Jeong, Jiung']
   s.email       = ['ethernuiel@sanultari.com']
   s.homepage    = 'https://github.com/astral1/rails-webpack'
-  s.summary     = 'Rails Plugin fro webpack support'
-  s.description = 'Rails Plugin fro webpack support'
+  s.summary     = 'Rails Plugin for webpack support'
+  s.description = 'Rails Plugin for webpack support'
   s.license     = 'MIT'
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.rdoc']
