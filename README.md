@@ -151,6 +151,11 @@ rake webpack:sync
 - `rake prepare:webpack` - Webpack 작업 실행. `assets:precompile`이 실행될 때 함께 실행된다.
 - `rake webpack:init` - 기본 레이아웃 작성. intializer, default script, page script등
 
+TO DOs
+------
+
+- 의존성에 대한 버전 머지기능 지원(현재는 버전스펙까지 동일해야만 정리됨)
+
 License
 -------
 

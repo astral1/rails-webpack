@@ -21,22 +21,26 @@ module Rails::Webpack::Actions
       fqn = current_scope[0, depth + 1].join('.')
       if fqn.start_with?('bower.dependencies')
         next unless depth == 1
+        log :webpack, 'bower.dependencies'
         replace_dependencies(collections, :bower, 'dependencies', new_contents)
         next
       end
       if fqn.start_with?('npm.dependencies')
         next unless depth == 1
+        log :webpack, 'npm.dependencies'
         replace_dependencies(collections, :npm, 'dependencies', new_contents)
         next
       end
       if fqn.start_with?('npm.develop_dependencies')
         next unless depth == 1
+        log :webpack, 'npm.develop_dependencies'
         replace_dependencies(collections, :npm_develop, 'develop_dependencies', new_contents)
         next
       end
       new_contents << line.rstrip
     end
-    new_contents.join("\n")
+
+    File.write file, new_contents.join("\n")
   end
 
   private
