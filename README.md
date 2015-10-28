@@ -16,7 +16,7 @@ gem install rails-webpack -v '0.2.2'
 
 Gemfile에 아래 추가후, `bundle install`
 ```
-gem 'rails-webpack', '~> 0.2', '>= 0.2.2'
+gem 'rails-webpack', '~> 0.3', '>= 0.3.1'
 ```
 
 Usage
@@ -29,7 +29,8 @@ Usage
 
 은 자동으로 설치되지 않는다.
 
-`app/webpack`에 설정과 의존성이 들어간다. 빌드된 최종 결과물은 `app/assets/compiled`에 저장
+`app/webpack`에 설정과 의존성이 들어간다. 빌드된 최종 결과물은 `app/assets/compiled`에 저장.
+사용자의 소스는 `app/webpack/src`에 작성할 수 있다.
 
 ### 초기 설정
 
