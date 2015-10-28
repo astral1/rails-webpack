@@ -2,48 +2,38 @@ module Rails::Webpack::Actions
   def dependencies(&block)
     collections = Rails::Webpack::DependencyCollection.new Rails::Webpack::Config
     collections.instance_eval &block
-    file = Rails::Webpack::Config.source.to_s
+    processor = collections.processor
 
-    contents = File.read file
+    processor.process([
+      {
+        matcher: 'bower.dependencies',
+        category: :bower,
+        text: 'dependencies'
+      },
+      {
+        matcher: 'npm.dependencies',
+        category: :npm,
+        text: 'dependencies'
+      },
+      {
+        matcher: 'npm.develop_dependencies',
+        category: :npm_develop,
+        text: 'develop_dependencies'
+      }
+    ])
 
-    new_contents = []
-    current_scope = []
-    depth = 0
-    indent = ' ' * 2
-    contents.lines.each do |line|
-      if line.match(/^\s*#/)
-        new_contents << line.rstrip
-        next
-      end
-      depth = line.match(/(^(#{indent}){0,})/)[1].length / indent.length
-      name = line.split(':').first.strip
-      current_scope[depth] = name
-      fqn = current_scope[0, depth + 1].join('.')
-      if fqn.start_with?('bower.dependencies')
-        next unless depth == 1
-        log :webpack, 'bower.dependencies'
-        replace_dependencies(collections, :bower, 'dependencies', new_contents)
-        next
-      end
-      if fqn.start_with?('npm.dependencies')
-        next unless depth == 1
-        log :webpack, 'npm.dependencies'
-        replace_dependencies(collections, :npm, 'dependencies', new_contents)
-        next
-      end
-      if fqn.start_with?('npm.develop_dependencies')
-        next unless depth == 1
-        log :webpack, 'npm.develop_dependencies'
-        replace_dependencies(collections, :npm_develop, 'develop_dependencies', new_contents)
-        next
-      end
-      new_contents << line.rstrip
-    end
-
-    File.write file, new_contents.join("\n")
+    processor.flush
   end
 
   private
+  def process_line(fqn, matcher, category, node, depth, collections, new_contents)
+    return false unless fqn.start_with? matcher
+    return true unless depth == 1
+    log :webpack, "dependencies.#{category.to_s}"
+    replace_dependencies(collections, category, node, new_contents)
+    true
+  end
+  
   def replace_dependencies(collections, category, text, new_contents)
     deps = collections.yamlize(category)
     new_contents << "  #{text}:#{' []' if deps.blank?}"
