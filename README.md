@@ -1,7 +1,7 @@
 Rails Webpack
 =============
 
-[![Code Climate](https://codeclimate.com/github/astral1/rails-webpack/badges/gpa.svg)](https://codeclimate.com/github/astral1/rails-webpack)
+[![Code Climate](https://codeclimate.com/github/astral1/rails-webpack/badges/gpa.svg)](https://codeclimate.com/github/astral1/rails-webpack) [![Gem Version](https://badge.fury.io/rb/rails-webpack.svg)](https://badge.fury.io/rb/rails-webpack)
 
 Rails에서 Webpack과 Gulp 조합을 사용하기 위한 소소한 보조 라이브러리.
 
