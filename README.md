@@ -156,6 +156,7 @@ TO DOs
 ------
 
 - 의존성에 대한 버전 머지기능 지원(현재는 버전스펙까지 동일해야만 정리됨)
+- bower, gulp에 대한 다양한 타겟 적용(현재는 `bower install`, `gulp [webpack]`의 경우에 사용.
 
 License
 -------
