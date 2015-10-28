@@ -1,6 +1,8 @@
 Rails Webpack
 =============
 
+[![Code Climate](https://codeclimate.com/github/astral1/rails-webpack/badges/gpa.svg)](https://codeclimate.com/github/astral1/rails-webpack)
+
 Rails에서 Webpack과 Gulp 조합을 사용하기 위한 소소한 보조 라이브러리.
 
 Install
@@ -141,13 +143,18 @@ rake webpack:sync
 
 #### Rake
 
-`rake gulp:webpack` - gulp로 webpack 태스크 실행
-`rake gulp:bower` - gulp로 bower 태스크 실행
-`rake npm:install` - npm 패키지 설치
-`rake npm:clean` - npm으로 설치된 패키지 모두 삭제
-`rake npm:install:clean` - 기존 의존성을 모두 삭제한 후 재설치
-`rake prepare:webpack` - Webpack 작업 실행. `assets:precompile`이 실행될 때 함께 실행된다.
-`rake webpack:init` - 기본 레이아웃 작성. intializer, default script, page script등
+- `rake gulp:webpack` - gulp로 webpack 태스크 실행
+- `rake gulp:bower` - gulp로 bower 태스크 실행
+- `rake npm:install` - npm 패키지 설치
+- `rake npm:clean` - npm으로 설치된 패키지 모두 삭제
+- `rake npm:install:clean` - 기존 의존성을 모두 삭제한 후 재설치
+- `rake prepare:webpack` - Webpack 작업 실행. `assets:precompile`이 실행될 때 함께 실행된다.
+- `rake webpack:init` - 기본 레이아웃 작성. intializer, default script, page script등
+
+TO DOs
+------
+
+- 의존성에 대한 버전 머지기능 지원(현재는 버전스펙까지 동일해야만 정리됨)
 
 License
 -------
