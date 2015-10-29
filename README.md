@@ -9,14 +9,14 @@ Install
 -------
 
 ```
-gem install rails-webpack -v '0.2.2'
+gem install rails-webpack -v '0.4.0.pre'
 ```
 
 혹은 Bundler를 이용할 경우
 
 Gemfile에 아래 추가후, `bundle install`
 ```
-gem 'rails-webpack', '~> 0.3', '>= 0.3.1'
+gem 'rails-webpack'
 ```
 
 Usage
@@ -38,7 +38,7 @@ Usage
 rails generate webpack:config
 ```
 
-config/webpack.yml 이 없다면 생성되나 이미 있다면 여러번 실행하더라도 설정파일을 더이상 변경하지 않는다.
+config/webpack.yml 이 없다면 생성되나 이미 있다면 여러번 실행하더라도 의존성을 제외하고 설정파일을 자동으로 수정하지 않는다.
 
 ### 샘플 설정
 
@@ -146,6 +146,7 @@ rake webpack:sync
 
 - `rake gulp:webpack` - gulp로 webpack 태스크 실행
 - `rake gulp:bower` - gulp로 bower 태스크 실행
+- `rake 'gulp[task,arg1,arg...]'` - gulp에서 사용자가 정의한 `task`를 파라미터 목록과 함께 실행
 - `rake npm:install` - npm 패키지 설치
 - `rake npm:clean` - npm으로 설치된 패키지 모두 삭제
 - `rake npm:install:clean` - 기존 의존성을 모두 삭제한 후 재설치
@@ -156,7 +157,6 @@ TO DOs
 ------
 
 - 의존성에 대한 버전 머지기능 지원(현재는 버전스펙까지 동일해야만 정리됨)
-- bower, gulp에 대한 다양한 타겟 적용(현재는 `bower install`, `gulp [webpack]`의 경우에 사용.
 
 License
 -------
