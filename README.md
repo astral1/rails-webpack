@@ -9,14 +9,14 @@ Install
 -------
 
 ```
-gem install rails-webpack -v '0.4.0.pre'
+gem install rails-webpack -v '0.4.0'
 ```
 
 혹은 Bundler를 이용할 경우
 
 Gemfile에 아래 추가후, `bundle install`
 ```
-gem 'rails-webpack'
+gem 'rails-webpack', '~> 0.4'
 ```
 
 Usage
