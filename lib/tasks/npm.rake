@@ -2,7 +2,7 @@ namespace :npm do
   desc 'Run npm install'
   task :install => 'webpack:sync' do
     Dir.chdir 'app/webpack' do
-      sh 'npm install' do |ok, _|
+      sh 'npm install', verbose: false do |ok, _|
         fail 'Error running npm install.' unless ok
       end
     end

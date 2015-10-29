@@ -1,7 +1,7 @@
 Rails Webpack
 =============
 
-[![Code Climate](https://codeclimate.com/github/astral1/rails-webpack/badges/gpa.svg)](https://codeclimate.com/github/astral1/rails-webpack)
+[![Code Climate](https://codeclimate.com/github/astral1/rails-webpack/badges/gpa.svg)](https://codeclimate.com/github/astral1/rails-webpack) [![Gem Version](https://badge.fury.io/rb/rails-webpack.svg)](https://badge.fury.io/rb/rails-webpack)
 
 Rails에서 Webpack과 Gulp 조합을 사용하기 위한 소소한 보조 라이브러리.
 
@@ -9,14 +9,14 @@ Install
 -------
 
 ```
-gem install rails-webpack -v '0.2.2'
+gem install rails-webpack -v '0.4.0'
 ```
 
 혹은 Bundler를 이용할 경우
 
 Gemfile에 아래 추가후, `bundle install`
 ```
-gem 'rails-webpack', '~> 0.2', '>= 0.2.2'
+gem 'rails-webpack', '~> 0.4'
 ```
 
 Usage
@@ -29,7 +29,8 @@ Usage
 
 은 자동으로 설치되지 않는다.
 
-`app/webpack`에 설정과 의존성이 들어간다. 빌드된 최종 결과물은 `app/assets/compiled`에 저장
+`app/webpack`에 설정과 의존성이 들어간다. 빌드된 최종 결과물은 `app/assets/compiled`에 저장.
+사용자의 소스는 `app/webpack/src`에 작성할 수 있다.
 
 ### 초기 설정
 
@@ -37,7 +38,7 @@ Usage
 rails generate webpack:config
 ```
 
-config/webpack.yml 이 없다면 생성되나 이미 있다면 여러번 실행하더라도 설정파일을 더이상 변경하지 않는다.
+config/webpack.yml 이 없다면 생성되나 이미 있다면 여러번 실행하더라도 의존성을 제외하고 설정파일을 자동으로 수정하지 않는다.
 
 ### 샘플 설정
 
@@ -145,6 +146,7 @@ rake webpack:sync
 
 - `rake gulp:webpack` - gulp로 webpack 태스크 실행
 - `rake gulp:bower` - gulp로 bower 태스크 실행
+- `rake 'gulp[task,arg1,arg...]'` - gulp에서 사용자가 정의한 `task`를 파라미터 목록과 함께 실행
 - `rake npm:install` - npm 패키지 설치
 - `rake npm:clean` - npm으로 설치된 패키지 모두 삭제
 - `rake npm:install:clean` - 기존 의존성을 모두 삭제한 후 재설치
