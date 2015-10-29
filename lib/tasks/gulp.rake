@@ -17,3 +17,12 @@ namespace :gulp do
     end
   end
 end
+
+desc 'Run gulp task specified without parameters'
+task :gulp, [:name] do |_, args|
+  Dir.chdir 'app/webpack' do
+    sh "gulp #{args[:name]}" do |ok, _|
+        fail "Error running #{args[:name]} task." unless ok
+    end
+  end
+end
