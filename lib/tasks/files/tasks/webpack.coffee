@@ -19,9 +19,10 @@ webpack = (gulp, plugins, root) ->
             { test: /\.less$/, loader: 'style!css!less' }
           ]
         plugins: [
-          new webpack.ResolverPlugin(
+          new webpack.ResolverPlugin([
+            new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('package.json', ['main']),
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('bower.json', ['main'])
-          )
+          ])
         ]
       ))
       .pipe(gulp.dest(path.join root, '../assets/compiled/'))
