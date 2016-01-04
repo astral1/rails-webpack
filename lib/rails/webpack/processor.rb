@@ -12,6 +12,7 @@ class Rails::Webpack::Processor
   def process(config_list)
     @contents.each do |line|
       next if comments(line)
+      next if blank_lines(line)
       @depth = line.match(/(^(#{@indent}){0,})/)[1].length / @indent.length
       @scope[@depth] = line.split(':').first.strip
       @fullname = @scope[0, @depth + 1].join('.')
@@ -41,7 +42,7 @@ class Rails::Webpack::Processor
 
   def comments(line)
     return false unless line.match(/^\s*#/)
-      @generated << line
+    @generated << line
     true
   end
 
@@ -49,5 +50,11 @@ class Rails::Webpack::Processor
     deps = @collections.yamlize(config[:category])
     @generated << "  #{config[:text]}:#{' []' if deps.blank?}"
     @generated << deps unless deps.blank?
+  end
+
+  def blank_lines(line)
+    return false unless line.match(/^\s*$/)
+    @generated << line
+    true
   end
 end
