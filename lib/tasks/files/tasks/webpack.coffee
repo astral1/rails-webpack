@@ -22,7 +22,13 @@ webpack = (gulp, plugins, root) ->
           new webpack.ResolverPlugin([
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('package.json', ['main']),
             new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('bower.json', ['main'])
-          ])
+          ]),
+          new webpack.optimize.CommonsChunkPlugin(
+            name: 'core'
+            filename: 'core.bundle.js'
+            async: true
+            minChunks: 2
+          )
         ]
       ))
       .pipe(gulp.dest(path.join root, '../assets/compiled/'))
