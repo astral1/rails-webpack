@@ -16,6 +16,9 @@ namespace :webpack do
     thor :copy_file, 'files/src/page.common.coffee', 'app/webpack/src/pages/common.coffee'
 
     thor :gsub_file, 'config/initializers/assets.rb', /(version\s=\s)["'][0-9]+(\.[0-9]+)*["']$/, "\\1'#{Rails.application.config.webpack.version}'"
+    thor :append_to_file, 'config/environments/test.rb' do
+        'Rails.application.config.assets.precompile += [/.*\.js/,/.*\.css/]'
+    end
     thor :copy_file, 'files/tasks.coffee', 'app/webpack/tasks.coffee'
     thor :copy_file, 'files/tasks/bower.coffee', 'app/webpack/tasks/bower.coffee'
     if File.exist? 'app/webpack/tasks/webpack.coffee'
